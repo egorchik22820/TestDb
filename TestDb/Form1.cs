@@ -5,6 +5,9 @@ namespace TestDb
 {
     public partial class Form1 : Form
     {
+        private DataSet _userSet = new DataSet();
+        private SqlDataAdapter _adapter;
+
         public Form1()
         {
             InitializeComponent();
@@ -14,13 +17,36 @@ namespace TestDb
             connection.Open();
             if (connection.State == System.Data.ConnectionState.Open)
             {
-                connectionStatusLabel.Text = "Connected";
                 string selectQuery = "SELECT * FROM users;";
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(selectQuery, connection);
-                DataSet usersSet = new DataSet();
-                sqlDataAdapter.Fill(usersSet);
-                usersGrid.DataSource = usersSet.Tables[0];
+                _adapter = new SqlDataAdapter(selectQuery, connection);
+                _adapter.Fill(_userSet);
             }
+        }
+
+        private void reg_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            foreach (DataRow row in _userSet.Tables[0].Rows)
+            {
+                if (row["login"].ToString() == textBox1.Text && row["password"].ToString() == textBox2.Text)
+                {
+                    Form2 f = new Form2();
+                    f.Show();
+                    return;
+
+
+                }
+            }
+            reg r = new reg();
+            r.Show();
+             
         }
     }
 }

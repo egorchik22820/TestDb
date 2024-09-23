@@ -49,12 +49,22 @@ namespace TestDb
             DataRow newRow = _userSet.Tables[0].NewRow();
             newRow["login"] = textBox1.Text;
             newRow["password"] = textBox2.Text;
-            newRow["FIO"] = "smth1";
-            newRow["e-mail"] = "smth2";
-            newRow["phone"] = "smth3";
+            newRow["FIO"] = textBox3.Text;
+            newRow["e-mail"] = textBox4.Text;
+            newRow["phone"] = textBox5.Text;
             _userSet.Tables[0].Rows.Add(newRow);
             SaveData();
             MessageBox.Show("user added");
         }
+private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 }
