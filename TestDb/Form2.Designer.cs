@@ -37,6 +37,7 @@
             button3 = new Button();
             button4 = new Button();
             button5 = new Button();
+            deleteButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
@@ -124,11 +125,22 @@
             button5.UseVisualStyleBackColor = true;
             button5.Click += button5_Click;
             // 
+            // deleteButton
+            // 
+            deleteButton.Location = new Point(519, 106);
+            deleteButton.Name = "deleteButton";
+            deleteButton.Size = new Size(82, 23);
+            deleteButton.TabIndex = 9;
+            deleteButton.Text = "удалить";
+            deleteButton.UseVisualStyleBackColor = true;
+            deleteButton.Click += deleteButton_Click;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1261, 757);
+            Controls.Add(deleteButton);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button3);
@@ -159,5 +171,6 @@
         private Button button3;
         private Button button4;
         private Button button5;
+        private Button deleteButton;
     }
 }

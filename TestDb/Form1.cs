@@ -12,6 +12,8 @@ namespace TestDb
         {
             InitializeComponent();
 
+            this.AcceptButton = button1;
+
             string connectionString = @"Data Source=pcsqlstud01;Initial Catalog=10240013;Integrated Security=True;Encrypt=False";
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();

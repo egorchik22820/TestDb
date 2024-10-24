@@ -98,5 +98,40 @@ namespace TestDb
             }
 
         }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            if (dataGridView2.SelectedRows.Count > 0 && dataGridView2.SelectedRows[0].Index < dataGridView2.RowCount - 1)
+            {
+                
+                var selectedRowIndex = dataGridView2.SelectedRows[0].Index;
+
+                // Показать диалоговое окно подтверждения
+                var result = MessageBox.Show("Вы уверены, что хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    // Удаление выбранной строки
+                    dataGridView2.Rows.RemoveAt(selectedRowIndex);
+                }
+                
+                SaveChanges();
+
+            }
+            else
+            {
+                // Если строка не выбрана, показать сообщение
+                MessageBox.Show("Пожалуйста, выберите запись для удаления.", "Удаление записи", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void SaveChanges()
+        {
+            SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(_adapter);
+            _adapter.Update(_userSet);
+
+            SqlCommandBuilder sqlCommandBuilder2 = new SqlCommandBuilder(_adapter2);
+            _adapter2.Update(_userSet2);
+        }
     }
 }
